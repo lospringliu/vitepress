@@ -39,7 +39,7 @@ export async function renderPage(
   ))
   const pageData = JSON.parse(__pageData)
 
-  const assetPath = `${siteData.base}assets/`
+  const assetPath = `${siteData.base}_assets/`
   const preloadLinks = [
     // resolve imports for index.js + page.md.js and inject script tags for
     // them as well so we fetch everything as early as possible without having
@@ -60,6 +60,7 @@ export async function renderPage(
     siteData.title
   }</title>
     <meta name="description" content="${siteData.description}">
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <link rel="stylesheet" href="${assetPath}${cssChunk.fileName}">
     ${preloadLinks}
     ${renderHead(siteData.head)}
@@ -69,7 +70,6 @@ export async function renderPage(
     <div id="app">${content}</div>
     <script>__VP_HASH_MAP__ = JSON.parse(${hashMapStirng})</script>
     <script type="module" async src="${assetPath}${appChunk.fileName}"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
   </body>
 </html>`.trim()
   const htmlFileName = path.join(config.outDir, page.replace(/\.md$/, '.html'))
