@@ -1,0 +1,88 @@
+{
+  "name": "vpress",
+  "version": "0.5.0",
+  "description": "",
+  "main": "dist/node/index.js",
+  "typings": "types/index.d.ts",
+  "bin": {
+    "vitepress": "bin/vitepress.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "dist",
+    "types"
+  ],
+  "keywords": [
+    "vite",
+    "vue",
+    "vuepress"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vitepress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vuejs/vitepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vitepress/tree/master/#readme",
+  "scripts": {
+    "dev": "run-p dev-client dev-client-copy dev-node dev-shared",
+    "dev-client": "tsc -w -p src/client",
+    "dev-client-copy": "node scripts/watchAndCopy",
+    "dev-node": "tsc -w -p src/node",
+    "build": "rimraf -rf dist && tsc -p src/client ; tsc -p src/node ; tsc -p src/shared ; node scripts/copy"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "gitHooks": {},
+  "lint-staged": {
+    "*.js": [
+      "prettier --write"
+    ],
+    "*.ts": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "author": "Evan You",
+  "license": "MIT",
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.0.0-rc.4",
+    "@vue/server-renderer": "^3.0.0-rc.4",
+    "debug": "^4.1.1",
+    "diacritics": "^1.3.0",
+    "escape-html": "^1.0.3",
+    "fs-extra": "^9.0.0",
+    "globby": "^11.0.0",
+    "gray-matter": "^4.0.2",
+    "lru-cache": "^5.1.1",
+    "markdown-it": "^10.0.0",
+    "markdown-it-anchor": "^5.2.7",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-table-of-contents": "^0.4.4",
+    "minimist": "^1.2.5",
+    "prismjs": "^1.20.0",
+    "slash": "^3.0.0",
+    "vite": "^1.0.0-rc.3",
+    "vpress-mdi-details": "^1.1.9",
+    "vue": "^3.0.0-rc.4"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^8.1.0",
+    "@types/lru-cache": "^5.1.0",
+    "@types/markdown-it": "^10.0.1",
+    "@types/node": "^13.13.4",
+    "@types/postcss-load-config": "^2.0.1",
+    "chokidar": "^3.4.0",
+    "conventional-changelog-cli": "^2.0.31",
+    "lint-staged": "^10.2.1",
+    "mermaid": "^8.6.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3",
+    "yorkie": "^2.0.0"
+  }
+}
